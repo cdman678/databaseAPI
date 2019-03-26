@@ -5,7 +5,6 @@
 #include <mysql.h>
 #include <stdio.h>
 
-
-
+void description();
 
 #endif
