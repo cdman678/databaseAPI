@@ -6,7 +6,7 @@
 #include <stdio.h>  //input output
 #include <string.h> //using strings
 
-
-void description();
+//Returns the name and description given a plant name - currently just prints
+void description(char plantName[20]);
 
 #endif
