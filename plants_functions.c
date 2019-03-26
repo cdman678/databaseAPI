@@ -15,7 +15,7 @@ char *password = "cornisgood";
 char *database = "plants";
 /****/
 
-//Currently this function returns the description of a given plantName (this could be switched to plantID
+//Currently this function returns the name of a plant and description of a given plantName (this could be switched to plantID
 void description(char plantName[20]) {
  
    //creating 'connection' object
@@ -34,6 +34,7 @@ void description(char plantName[20]) {
    strcat(query_temp, plantName);
    strcat(query_temp, temp); 
  
+   //assign a pointer the value of the query string
    const char (*query)[1000] = &query_temp;
  
    // send SQL query
@@ -46,6 +47,8 @@ void description(char plantName[20]) {
   
    //saving the result
    res = mysql_use_result(conn);
+ 
+   //TODO: find out how to return 'res' and not just print
    
    //finding how many fields are in the result from the above query
    int num_fields = mysql_num_fields(res);
