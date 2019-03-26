@@ -2,34 +2,29 @@
 
 #include "databaseAPI.h"
 
-//Establishing a 'static' connection for all functions in this code
+/****/
+//Establishing SQL variables 
+MYSQL *conn;    //Saving the connection
+MYSQL_RES *res; //Result of query variable
+MYSQL_ROW row;  //Used for reading rows in a table
 
-
+//Establishing 'log in' credentials  
+char *server = "localhost";
+char *user = "ubuntu";
+char *password = "cornisgood";
+char *database = "plants";
+/****/
 
 //char database_name[20]
 void description() {
-  
-  /****/
-  //Establishing SQL variables 
-  MYSQL *conn;    //Saving the connection
-  MYSQL_RES *res; //Result of query variable
-  MYSQL_ROW row;  //Used for reading rows in a table
-
-  //Establishing 'log in' credentials  
-  char *server = "localhost";
-  char *user = "ubuntu";
-  char *password = "cornisgood";
-  char *database = "plants";
-  /****/
  
-   //saving the connection
+   //creating 'connection' object
    conn = mysql_init(NULL);
  
    // Check Connect to database before executing command
    if (!mysql_real_connect(conn, server,user, password, database, 0, NULL, 0)) {
       //executes upon error
-      //fprintf(stderr, "%s\n", mysql_error(conn));
-      printf("exit(1)\n");
+      fprintf(stderr, "%s\n", mysql_error(conn));
       exit(1);
    }
 
@@ -60,6 +55,3 @@ void description() {
    mysql_close(conn);
 }
 
-void test(){
-  printf("this is a test function"); 
-}
