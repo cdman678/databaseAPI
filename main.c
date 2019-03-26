@@ -4,7 +4,7 @@
 
 int main(){
 
-  description();
+  description("Corn");
 
 return(0);
 }
