@@ -29,15 +29,15 @@ void description(char plantName[20]) {
    }
  
    //Creating query string to pass to mySQL
-   char query_temp[1000] = "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID AND p.name =";
-   char temp[10] = ";";
+   char query_temp[1000] = "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID AND p.name =\"";
+   char temp[10] = "\";";
    strcat(query_temp, plantName);
    strcat(query_temp, temp); 
  
-   char *query = &query_temp;
+   const char (*query)[1000] = &query_temp;
  
    // send SQL query
-   if (mysql_query(conn, query)){
+   if (mysql_query(conn, *query)){
       //executes upon error
       //fprintf(stderr, "%s\n", mysql_error(conn));
       printf("exit(1)\n");
