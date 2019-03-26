@@ -28,14 +28,16 @@ void description() {
    // Check Connect to database before executing command
    if (!mysql_real_connect(conn, server,user, password, database, 0, NULL, 0)) {
       //executes upon error
-      fprintf(stderr, "%s\n", mysql_error(conn));
+      //fprintf(stderr, "%s\n", mysql_error(conn));
+      printf("exit(1)\n");
       exit(1);
    }
 
    // send SQL query
    if (mysql_query(conn, "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID;")){
       //executes upon error
-      fprintf(stderr, "%s\n", mysql_error(conn));
+      //fprintf(stderr, "%s\n", mysql_error(conn));
+      printf("exit(1)\n");
       exit(1);
    }
   
@@ -56,4 +58,8 @@ void description() {
    // close connection to server
    mysql_free_result(res);
    mysql_close(conn);
+}
+
+void test(){
+  printf("this is a test function"); 
 }
