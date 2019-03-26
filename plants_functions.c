@@ -15,8 +15,8 @@ char *password = "cornisgood";
 char *database = "plants";
 /****/
 
-//char database_name[20]
-void description() {
+//Currently this function returns the description of a given plantName (this could be switched to plantID
+void description(char plantName[20]) {
  
    //creating 'connection' object
    conn = mysql_init(NULL);
@@ -27,9 +27,11 @@ void description() {
       fprintf(stderr, "%s\n", mysql_error(conn));
       exit(1);
    }
+ 
+   char query[20] = "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID AND p.name =" + plantName + ";";
 
    // send SQL query
-   if (mysql_query(conn, "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID;")){
+   if (mysql_query(conn, query)){
       //executes upon error
       //fprintf(stderr, "%s\n", mysql_error(conn));
       printf("exit(1)\n");
