@@ -28,8 +28,12 @@ void description(char plantName[20]) {
       exit(1);
    }
  
-   char query[20] = "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID AND p.name =" + plantName + ";";
-
+   //Creating query string to pass to mySQL
+   char query[100] = "SELECT p.name, d.description FROM masterPlants p, description d WHERE p.plantID = d.plantID AND p.name =";
+   char temp[10] = ";";
+   strcat(query, plantName);
+   strcat(query, temp); 
+ 
    // send SQL query
    if (mysql_query(conn, query)){
       //executes upon error
