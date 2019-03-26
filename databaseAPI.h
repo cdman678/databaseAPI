@@ -6,6 +6,5 @@
 #include <stdio.h>
 
 void description();
-void test();
 
 #endif
