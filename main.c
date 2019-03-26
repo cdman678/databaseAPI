@@ -3,8 +3,8 @@
 /*gcc -o exc $(mysql_config --cflags) main.c plants_functions.c $(mysql_config --libs)*/
 
 int main(){
-  test();
+
   description();
-  test();
+
 return(0);
 }
